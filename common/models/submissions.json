@@ -1,0 +1,41 @@
+{
+  "name": "Submissions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true
+    }
+  },
+  "properties": {
+    "groupName": {
+      "type": "string"
+    },
+    "teacher": {
+      "type": "string"
+    },
+    "class": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "number"
+    },
+    "city": {
+      "type": "string"
+    },
+    "district": {
+      "type": "string"
+    },
+    "school": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

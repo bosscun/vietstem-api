@@ -1,0 +1,98 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins",
+      "../node_modules/loopback-ds-timestamp-mixin",
+      "../node_modules/loopback-nested-filter-mixin"
+    ]
+  },
+  "Application": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Installation": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Notification": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "ACL": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mysql",
+    "public": true,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Container": {
+    "dataSource": "storage",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "mail",
+    "public": true
+  },
+  "ApplicationCredential": {
+    "dataSource": "mysql",
+    "public": false
+  },
+  "Push": {
+    "dataSource": "push",
+    "public": true
+  },
+  "Account": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Course": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Product": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Faq": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Ask": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Submissions": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Post": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "Company": {
+    "dataSource": "mysql",
+    "public": true
+  },
+  "AccountAccessToken": {
+    "dataSource": "mysql",
+    "public": true
+  }
+}

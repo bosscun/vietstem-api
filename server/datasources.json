@@ -1,0 +1,47 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./uploads"
+  },
+  "mysql": {
+    "host": "",
+    "port": 0,
+    "url": "mysql://tantn:12345@localhost/tantn",
+    "database": "",
+    "password": "",
+    "name": "mysql",
+    "user": "",
+    "connector": "mysql"
+  },
+  "mail": {
+    "name": "mail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "SSL0.OVH.NET",
+        "port": 465,
+        "secure": true,
+        "auth": {
+          "user": "no-reply@bfast-system.net",
+          "pass": "Ludo6625@"
+        },
+        "logger": false,
+        "debug": false
+      }
+    ]
+  },
+  "push": {
+    "name": "push",
+    "connector": "loopback-component-push",
+    "installation": "Installation",
+    "notification": "Notification",
+    "application": "Application"
+  }
+}

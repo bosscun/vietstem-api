@@ -1,0 +1,97 @@
+***************
+*** 12186,12199 ****
+      additionalProperties: false
+    EBit:
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        kind:
+          type: string
+        status:
+          type: string
+        interactedAt:
+          type: string
+          format: date-time
+--- 12198,12260 ----
+      additionalProperties: false
+    EBit:
+      properties:
++       parents:
++         type: array
++         items:
++           $ref: '#/definitions/Lnk2'
++       children:
++         type: array
++         items:
++           $ref: '#/definitions/Lnk2'
++       picEs:
++         $ref: '#/definitions/PicE'
++       sndEs:
++         $ref: '#/definitions/SndE'
++       txtEs:
++         $ref: '#/definitions/TxtE'
++       colEs:
++         $ref: '#/definitions/ColE'
++       lnk2s:
++         $ref: '#/definitions/Lnk2'
++       usrIs:
++         $ref: '#/definitions/UsrI'
++       usrOs:
++         $ref: '#/definitions/UsrO'
++       usrGs:
++         $ref: '#/definitions/UsrG'
++       tagEs:
++         $ref: '#/definitions/TagE'
++       mssgs:
++         $ref: '#/definitions/Mssg'
++       frmlMs:
++         $ref: '#/definitions/FrmlM'
++       frmlIs:
++         $ref: '#/definitions/FrmlI'
+        title:
+          type: string
+        description:
+          type: string
+        kind:
+          type: string
++         enum:
++           - Lnk2
++           - PicE
++           - SndE
++           - TxE
++           - ColE
++           - UsrI
++           - UsrO
++           - UsrG
++           - TagE
++           - TagM
++           - Mssg
++           - FrmlM
++           - FrmlI
+        status:
+          type: string
++         enum:
++           - DEACTIVATED
++           - ACTIVATED
+        interactedAt:
+          type: string
+          format: date-time
+***************
+*** 12579,12584 ****
+          format: double
+      additionalProperties: false
+    SndE:
+      properties:
+        length:
+          type: number
+--- 12664,12671 ----
+          format: double
+      additionalProperties: false
+    SndE:
++     eBit:
++       $ref: '#/definitions/EBit'
+      properties:
+        length:
+          type: number

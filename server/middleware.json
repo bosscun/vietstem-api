@@ -1,0 +1,66 @@
+{
+  "initial:before": {
+    "loopback#favicon": {
+      "params": "$!../client/favicon.ico"
+    }
+  },
+  "initial": {
+    "compression": {},
+    "cors": {},
+    "helmet#xssFilter": {},
+    "helmet#frameguard": {
+      "params": {
+        "action": "deny"
+      }
+    },
+    "helmet#hsts": {
+      "params": {
+        "maxAge": 0,
+        "includeSubdomains": true
+      }
+    },
+    "helmet#hidePoweredBy": {},
+    "helmet#ieNoOpen": {},
+    "helmet#noSniff": {},
+    "helmet#noCache": {
+      "enabled": false
+    }
+  },
+  "session": {},
+  "auth": {},
+  "parse": {},
+  "routes": {
+    "loopback#rest": {
+      "paths": [
+        "${restApiRoot}"
+      ]
+    }
+  },
+  "files": {
+    "loopback#static": [
+      {
+        "paths": [
+          "/uploads"
+        ],
+        "params": "$!../uploads"
+      },
+      {
+        "paths": [
+          "/"
+        ],
+        "params": "$!../client"
+      }
+    ]
+  },
+  "final": {
+    "./middleware/url-not-found": {}
+  },
+  "final:after": {
+    "strong-error-handler": {
+      "params": {
+        "debug": true,
+        "log": true
+      }
+    }
+  }
+}

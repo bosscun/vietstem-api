@@ -1,0 +1,369 @@
+***************
+*** 13816,13823 ****
+          type: number
+          format: double
+      additionalProperties: false
+    UsrIAccessToken:
+      properties:
+        id:
+          type: string
+        ttl:
+--- 13816,13851 ----
+          type: number
+          format: double
+      additionalProperties: false
++   UsrICredential:
++     properties:
++       username:
++         type: string
++       email:
++         type: string
++       password:
++         type: string
++       ttl:
++        type: number
++   LoopbackError:
++      properties:
++        statusCode:
++          type: number
++        name:
++          type: string
++        message:
++          type: string
++        code:
++          type: string
++        stack:
++          type: string
++   LoopbackErrorResponse:
++     properties:
++       error:
++         $ref: '#/definitions/LoopbackError'
+    UsrIAccessToken:
+      properties:
++       user:
++         $ref: '#/definitions/UsrI'
+        id:
+          type: string
+        ttl:
+***************
+*** 13847,13860 ****
+      additionalProperties: false
+    EBit:
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        kind:
+          type: string
+        status:
+          type: string
+        popularite:
+          type: number
+          format: double
+--- 13875,13944 ----
+      additionalProperties: false
+    EBit:
+      properties:
++       parents:
++         type: array
++         items:
++           $ref: '#/definitions/Lnk2'
++       children:
++         type: array
++         items:
++           $ref: '#/definitions/Lnk2'
++       picEs:
++         $ref: '#/definitions/PicE'
++       sndEs:
++         $ref: '#/definitions/SndE'
++       txtEs:
++         $ref: '#/definitions/TxtE'
++       colEs:
++         $ref: '#/definitions/ColE'
++       lnk2s:
++         $ref: '#/definitions/Lnk2'
++       usrIs:
++         $ref: '#/definitions/UsrI'
++       usrOs:
++         $ref: '#/definitions/UsrO'
++       usrGs:
++         $ref: '#/definitions/UsrG'
++       tagEs:
++         $ref: '#/definitions/TagE'
++       mssgs:
++         $ref: '#/definitions/Mssg'
++       frmlMs:
++         $ref: '#/definitions/FrmlM'
++       frmlIs:
++         $ref: '#/definitions/FrmlI'
++       eBitLogs:
++         type: array
++         items:
++           $ref: '#/definitions/EBitLog'
++       usrI:
++         $ref: '#/definitions/UsrI'
+        title:
+          type: string
+        description:
+          type: string
+        kind:
+          type: string
++         enum:
++           - Lnk2
++           - PicE
++           - SndE
++           - TxtE
++           - ColE
++           - UsrI
++           - UsrO
++           - UsrG
++           - TagE
++           - TagM
++           - Mssg
++           - FrmlM
++           - FrmlI
+        status:
+          type: string
++         enum:
++           - DEACTIVATED
++           - ACTIVATED
++           - DELETED
+        popularite:
+          type: number
+          format: double
+***************
+*** 13885,13890 ****
+      additionalProperties: false
+    Mssg:
+      properties:
+        kind:
+          type: string
+        id:
+--- 13969,13976 ----
+      additionalProperties: false
+    Mssg:
+      properties:
++       eBit:
++        $ref: '#/definitions/EBit'
+        kind:
+          type: string
+        id:
+***************
+*** 6816,6821 ****
+      additionalProperties: false
+    UsrG:
+      properties:
+        name:
+          type: string
+        id:
+--- 6904,6911 ----
+      additionalProperties: false
+    UsrG:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
+        name:
+          type: string
+        id:
+***************
+*** 6860,6865 ****
+      additionalProperties: false
+    UsrI:
+      properties:
+        nom:
+          type: string
+        prenom:
+--- 6950,6967 ----
+      additionalProperties: false
+    UsrI:
+      properties:
++       password:
++         type: string
++       eBit:
++         $ref: '#/definitions/EBit'
++       eBits:
++         type: array
++         items:
++           $ref: '#/definitions/EBit'
++       eBitLogs:
++         type: array
++         items:
++           $ref: '#/definitions/EBitLog'
+        nom:
+          type: string
+        prenom:
+***************
+*** 6921,6926 ****
+      additionalProperties: false
+    Lnk2:
+      properties:
+        parentKind:
+          type: string
+        childKind:
+--- 7023,7034 ----
+      additionalProperties: false
+    Lnk2:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
++       child:
++         $ref: '#/definitions/EBit'
++       parent:
++         $ref: '#/definitions/EBit'
+        parentKind:
+          type: string
+        childKind:
+***************
+*** 6945,6952 ****
+          format: double
+        right:
+          type: string
+        access:
+          type: string
+        meta:
+          type: object
+        etat:
+--- 7053,7067 ----
+          format: double
+        right:
+          type: string
++         enum:
++           - ALLOW
++           - DENY
+        access:
+          type: string
++         enum:
++           - READ
++           - WRITE
++           - INTERACT
+        meta:
+          type: object
+        etat:
+***************
+*** 6972,6977 ****
+      additionalProperties: false
+    TxtE:
+      properties:
+        id:
+          type: number
+          format: double
+--- 7087,7094 ----
+      additionalProperties: false
+    TxtE:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
+        id:
+          type: number
+          format: double
+***************
+*** 6987,6992 ****
+      additionalProperties: false
+    PicE:
+      properties:
+        width:
+          type: number
+          format: double
+--- 7104,7111 ----
+      additionalProperties: false
+    PicE:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
+        width:
+          type: number
+          format: double
+***************
+*** 7039,7044 ****
+      additionalProperties: false
+    ColE:
+      properties:
+        id:
+          type: number
+          format: double
+--- 7158,7165 ----
+      additionalProperties: false
+    ColE:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
+        id:
+          type: number
+          format: double
+***************
+*** 7054,7059 ****
+      additionalProperties: false
+    TagE:
+      properties:
+        kind:
+          type: string
+        name:
+--- 7175,7182 ----
+      additionalProperties: false
+    TagE:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
+        kind:
+          type: string
+        name:
+***************
+*** 7086,7091 ****
+      additionalProperties: false
+    FrmlM:
+      properties:
+        forms:
+          type: array
+          items:
+--- 7209,7216 ----
+      additionalProperties: false
+    FrmlM:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
+        forms:
+          type: array
+          items:
+***************
+*** 7105,7110 ****
+      additionalProperties: false
+    FrmlI:
+      properties:
+        forms:
+          type: array
+          items:
+--- 7230,7237 ----
+      additionalProperties: false
+    FrmlI:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
+        forms:
+          type: array
+          items:
+***************
+*** 7127,7134 ****
+      additionalProperties: false
+    TagM:
+      properties:
+        kind:
+          type: string
+        id:
+          type: number
+          format: double
+--- 7254,7267 ----
+      additionalProperties: false
+    TagM:
+      properties:
++       eBit:
++         $ref: '#/definitions/EBit'
+        kind:
+          type: string
++       fields:
++         type: array
++         items:
++           type: object
+        id:
+          type: number
+          format: double
